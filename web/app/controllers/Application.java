@@ -13,7 +13,7 @@ public class Application extends Controller {
 
         User u = (User) renderArgs.get("user");
         if (!u.getType().equals(Constants.User.TEACHER)){
-            return;
+            index();
         }
     }
 
@@ -51,6 +51,8 @@ public class Application extends Controller {
 
 
     public static void setMark(String student) {
+        checkTeacher();
+        
         User u = User.loadUser(student);
         render(u);
     }
